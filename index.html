@@ -13,7 +13,7 @@
     :root{
       --fuente-titulo:'Alte Haas Grotesk',Helvetica,Arial,sans-serif;
       --fuente-texto:'Afacad',Helvetica,Arial,sans-serif;
-      --negro:#07070d; --morado:#722F37; --blanco:#f4f4f8; --gris:#a0a0b8; --olive: #708238;
+      --negro:#07070d; --morado:#722F37; --blanco:#f4f4f8; --gris:#a0a0b8; --olive: #708238; --nocolor: #70823800;
       --borde:rgba(152, 64, 133, 0);
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -62,11 +62,16 @@
       font-size:1.15rem;line-height:1.6;transition:border-color .3s;will-change:transform}
     .card:hover{border-color:var(--blanco)}
     .card b{display:block;font-family:var(--fuente-titulo);font-weight:400;letter-spacing:.1em;margin-bottom:.4rem}
-    .hueco{border:1px dashed var(--gris);min-height:32vh;display:grid;place-items:center;text-align:center;color:var(--gris);padding:1rem}
+    .hueco{border:1px dashed var(--nocolor);min-height:32vh;display:grid;place-items:center;text-align:center;color:var(--gris);padding:1rem}
     .hueco img{width:100%;height:100%;object-fit:contain}
     table{width:100%;border-collapse:collapse;margin-top:2rem;font-size:1.15rem}
     th,td{border:1px solid var(--borde);padding:.9rem;text-align:left}
     th{font-family:var(--fuente-titulo);font-weight:400;color:var(--gris)}
+    .card2{border:1px solid var(--borde);padding:1.5rem;background:#424e1f;backdrop-filter:blur(4px);
+      font-size:1.15rem;line-height:1.6;transition:border-color .3s;will-change:transform}
+    .card2:hover{border-color:var(--blanco)}
+    .card2 b{display:block;font-family:var(--fuente-titulo);font-weight:400;letter-spacing:.1em;margin-bottom:.4rem}
+
 
     /* Carrusel */
     .carrusel{position:relative;overflow:hidden;margin-top:2rem;border:1px solid var(--borde)}
@@ -112,6 +117,39 @@
     .frente{display:flex;flex-direction:column;justify-content:center;text-align:center}
     .frente small{color:var(--gris);margin-top:.8rem}
     .dorso{transform:rotateY(180deg);background:#708238;border-color:#708238}
+
+    #es .dos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #es .video-es {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+      pointer-events: none;
+    }
+    #cierre {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #cierre .video-cierre {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+   
     </style>
   </head>
   <body>
@@ -162,14 +200,14 @@
       <div class="dos reveal">
         <div class="flip">
           <div class="flip-in">
-            <div class="card cara frente"><b>HISTORIA 1</b>Nombre corto de la historia<br><small>Clic para ver</small></div>
-            <div class="card cara dorso"><b>HISTORIA 1</b>Como … quiero … para …<br><br><b>CRITERIOS DE ACEPTACIÓN</b>• …<br>• …</div>
+            <div class="card cara frente"><b>HISTORIA 1</b>LECTURA DE ESTADO ACTUAL<br><small>Clic para ver</small></div>
+            <div class="card cara dorso"><b>HISTORIA 1</b>Como operador de granja y laboratorio, quiero ver de un vistazo el estado actual de un domicilio (temperatura, humedad y nivel de amoniaco) para saber si todo está en orden, detectar problemas a tiempo y decidir qué acción tomar durante mi ronda sin revisar varias pantallas.<br><br><b>CRITERIOS DE ACEPTACIÓN</b>• El operador tarda menos de 1 minuto en interpretar las lecturas de un domicilio.<br>• El operador califica la legibilidad de la interfaz por encima de 80.</div>
           </div>
         </div>
         <div class="flip">
           <div class="flip-in">
-            <div class="card cara frente"><b>HISTORIA 2</b>Nombre corto de la historia<br><small>Clic para ver</small></div>
-            <div class="card cara dorso"><b>HISTORIA 2</b>Como … quiero … para …<br><br><b>CRITERIOS DE ACEPTACIÓN</b>• …<br>• …</div>
+            <div class="card cara frente"><b>HISTORIA 2</b>PRIMERA VEZ EN INTERFAZ DEL SISTEMA<br><small>Clic para ver</small></div>
+            <div class="card cara dorso"><b>HISTORIA 2</b>Como operador de Granja y Laboratorio, quiero aprender de forma intuitiva y rápida a navegar en la interfaz del sistema para observar el estado de la granja de manera veloz y eficaz.<br><br><b>CRITERIOS DE ACEPTACIÓN</b>• Un operador nuevo falla en menos del 30 % del total de clics al realizar todas las tareas básicas.<br>• Un operador nuevo completa tareas básicas (abrir un domicilio, leer su estado y cambiar de criadero) en menos de 3 minutos.</div>
           </div>
         </div>
       </div>
@@ -217,8 +255,8 @@
       <h2 class="titulo reveal">ESPECIFICACIONES DE USABILIDAD</h2>
       <table class="reveal">
         <tr><th>Atributo</th><th>Métrica</th><th>Peor caso</th><th>Meta</th></tr>
-        <tr><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-        <tr><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+        <tr><td>Eficiencia</td><td>Tiempo en segundos para interpretar las lecturas de temperatura, humedad y nivel de amoniaco de un domicilio sin asistencia del facilitador</td><td>Más de 300 segundos (5 minutos)</td><td>Menos de 60 segundos (1 minuto)</td></tr>
+        <tr><td>Satisfacción</td><td>Porcentaje de calificación de satisfacción reportado por el usuario/cliente tras interactuar con la interfaz</td><td>Menos del 70 %</td><td>80 % o superior</td></tr>
       </table>
       <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
     </section>
@@ -228,11 +266,12 @@
       <p class="meta reveal">02 · PROTOTIPADO ÁGIL</p>
       <h2 class="titulo reveal">EVOLUCIÓN Y VALIDACIÓN</h2>
       <div class="tres reveal">
-        <div class="hueco">Prototipo en papel</div>
-        <div class="hueco">Wireframe</div>
+        <div class="hueco"><img src="papel.png" alt="Foto 1"></div>
+        <div class="hueco"><img src="wireframe.png" alt="Foto 1"></div>
         <div class="hueco">Versión final</div>
       </div>
-      <div class="card reveal" style="margin-top:1.5rem"><b>HALLAZGOS</b>…</div>
+      <div class="card2 reveal" style="margin-top:1.5rem"><b>MAGO DE OZ</b>En la prueba, el invitado buscó el amoniaco dentro del ícono de temperatura porque los tres íconos tenían el mismo peso visual y ninguno señalaba cuál estaba fuera de rango. En la nueva versión, la variable en alerta aparecerá más grande, con texto (“Amoniaco alto”) y con su unidad (ppm) junto al valor. Así el operador sabrá dónde tocar sin adivinar, y esperamos reducir el error como el tiempo de interpretación.
+</div>
       <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
     </section>
 
@@ -252,11 +291,14 @@
       <p class="meta reveal">03 · ENTRADA / SALIDA</p>
       <h2 class="titulo reveal">FLUJO DE E/S</h2>
       <div class="dos reveal">
-        <div class="hueco">Diagrama: sensores y actuadores → procesador</div>
-        <div class="card"><b>CONTROLADORES</b>…<br><br><b>INTERRUPCIONES (IRQ)</b>…<br><br><b>DMA: ¿EN QUÉ ESCENARIO?</b>…</div>
+        <video id="video-es" class="video-es" muted playsinline preload="metadata">
+          <source src="arqui.mp4" type="video/mp4">
+        </video>
       </div>
       <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span><span class="tag proyectado">[PROYECTADO]</span></p>
     </section>
+
+
 
     <!-- 3.3 SISTEMA OPERATIVO -->
     <section id="so">
@@ -264,7 +306,7 @@
       <h2 class="titulo reveal">CAPA DE ABSTRACCIÓN</h2>
       <div class="dos reveal">
         <div class="card"><b>NODO EMBEBIDO</b>… (firmware / RTOS)<br><br><b>SERVIDOR</b>… (Linux / Windows)</div>
-        <div class="hueco">Diagrama de capas: usuario → app → SO → hardware</div>
+        <div class="hueco"><img src="Tux.webp" alt="Foto 1"></div>
       </div>
       <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span><span class="tag proyectado">[PROYECTADO]</span></p>
     </section>
@@ -304,13 +346,9 @@
 
     <!-- 6. VALORACIÓN CRÍTICA -->
     <section id="cierre">
-      <p class="meta reveal">06 · VALORACIÓN CRÍTICA</p>
-      <h2 class="titulo reveal">LO QUE APRENDIMOS</h2>
-      <div class="tres reveal">
-        <div class="card"><b>MAYOR IMPACTO</b>…</div>
-        <div class="card"><b>BRECHA TEORÍA–PRÁCTICA</b>…</div>
-        <div class="card"><b>PERTINENCIA INDUSTRIAL</b>…</div>
-      </div>
+      <video id="video-cierre" class="video-cierre reveal" muted playsinline preload="auto">
+        <source src="apre.mp4" type="video/mp4">
+      </video>
     </section>
 
     </main>
@@ -391,6 +429,37 @@
       document.querySelector('.der').onclick=()=>ir(actual+1);
       ir(0);
 
+      const videoES = document.getElementById("video-es");
+
+      if (videoES) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              videoES.play().catch(() => {});
+              observer.unobserve(videoES); // Solo se dispara una vez
+            }
+          });
+        }, { threshold: 0.4 }); // Se activa cuando al menos el 40 % del video es visible
+
+        observer.observe(videoES);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+          const videoCierre = document.getElementById("video-cierre");
+          if (!videoCierre) return;
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                videoCierre.currentTime = 0;
+                videoCierre.play().catch(() => {});
+                observer.unobserve(videoCierre);
+              }
+            });
+          }, { threshold: 0.5 });
+
+          observer.observe(videoCierre);
+        });
       // 6. Aparecer elementos al hacer scroll
       const obs=new IntersectionObserver(entries=>{
         entries.forEach(e=>e.target.classList.toggle('visible',e.isIntersecting));

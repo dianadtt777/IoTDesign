@@ -1,0 +1,19 @@
+# Variables de entorno
+.env
+
+# Dependencias
+node_modules/
+venv/
+
+# Carpetas de compilación
+dist/
+build/
+
+# Editores y Sistema Operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
