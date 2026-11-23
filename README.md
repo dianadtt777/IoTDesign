@@ -4,7 +4,7 @@ Presentación web interactiva sobre el diseño UX y la arquitectura de sistemas 
 
 
 
-##  Estructura del proyecto (`IoT`)
+##  🌐 Estructura del proyecto (`IoT`)
 
 * `index.html` — Presentación web interactiva con estilos CSS, animaciones, tarjetas giratorias (*flip*), carrusel, sobre interactivo (*envelope*) y videos por sección.
 * **Tipografía:**
@@ -23,7 +23,7 @@ Presentación web interactiva sobre el diseño UX y la arquitectura de sistemas 
   * `riegos.mp4` — Video para la sección `#riesgos`.
   * `apre.mp4` — Video para la sección de cierre (`#cierre`).
 
-## Publicación en GitHub Pages
+## 🌐 Publicación en GitHub Pages
 
 1. Asegúrate de que `index.html` y todos los archivos multimedia/fuentes referenciados estén en la raíz del repositorio `IoTDesign` (rama `main`).
 2. Verifica que los nombres de archivo en `index.html` coincidan **exactamente** (incluyendo mayúsculas y minúsculas) con los archivos subidos, ya que GitHub Pages distingue entre mayúsculas y minúsculas.
@@ -31,5 +31,5 @@ Presentación web interactiva sobre el diseño UX y la arquitectura de sistemas 
 4. Accede a la URL del sitio:
    `https://dianadtt777.github.io/IoTDesign/`
 
-## Notas de mantenimiento
+## 🌐 Notas de mantenimiento
 * Si alguna imagen o video no carga tras publicar, revisa el nombre exacto en el código (`diagrama.png` vs. `diagrama-memoria.png`, o `riegos.mp4` vs. `riesgos.mp4`) y confirma que el repositorio sea público o cuente con soporte de GitHub Pages habilitado.
