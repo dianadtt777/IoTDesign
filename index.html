@@ -356,6 +356,25 @@
     #imagen-sistema .tag.aplicado {
       border: 1px solid var(--blanco);
     }
+
+    #imagen-sistema .card.cara.dorso.dorso-img {
+      padding: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--olive); /* o un color sólido que combine con la imagen */
+      border-color: var(--olive);
+    }
+
+    #imagen-sistema .dorso-img img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
    
     </style>
   </head>
@@ -396,6 +415,7 @@
         </div>
         <div class="puntos"></div>
       </div>
+      <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
     </section>
 
     <!-- 1.3 HISTORIAS DE USUARIO -->
@@ -450,7 +470,7 @@
           <div class="flip-in">
             <div class="card cara frente"><b>DOMICILIO DE GRILLOS</b>HARDWARE<br><small>Clic para ver</small></div>
             <div class="card cara dorso dorso-img">
-              <img src="MapaEmpatia.png" alt="Imagen del sistema - Hardware">
+              <img src="domicilio.png" alt="Imagen del sistema - Hardware">
             </div>
           </div>
         </div>
@@ -458,7 +478,7 @@
           <div class="flip-in">
             <div class="card cara frente"><b>DASHBOARD DE CONTROL</b>SOFTWARE<br><small>Clic para ver</small></div>
             <div class="card cara dorso dorso-img">
-              <img src="dash.jpg" alt="Imagen del sistema - Software">
+              <img src="dash.png" alt="Imagen del sistema - Software">
             </div>
           </div>
         </div>
@@ -488,17 +508,17 @@
       <div class="tres reveal">
         <div class="hueco"><img src="papel.png" alt="Foto 1"></div>
         <div class="hueco"><img src="wireframe.png" alt="Foto 1"></div>
-        <div class="hueco">Versión final</div>
+        <div class="hueco"><img src="final.png" alt="Foto 1"></div>
       </div>
       <div class="card2 reveal" style="margin-top:1.5rem"><b>MAGO DE OZ</b>En la prueba, el invitado buscó el amoniaco dentro del ícono de temperatura porque los tres íconos tenían el mismo peso visual y ninguno señalaba cuál estaba fuera de rango. En la nueva versión, la variable en alerta aparecerá más grande, con texto (“Amoniaco alto”) y con su unidad (ppm) junto al valor. Así el operador sabrá dónde tocar sin adivinar, y esperamos reducir el error como el tiempo de interpretación.
-    </div>
-      <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
+      </div>
+    <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
     </section>
 
     <!-- 3.1 JERARQUÍA DE MEMORIA Y PROCESAMIENTO -->
     <section id="memoria">
-      <p class="meta reveal">03 · MEMORIA Y PROCESAMIENTO</p>
-      <h2 class="titulo reveal">JERARQUÍA DE MEMORIA</h2>
+      <p class="meta reveal">03 · ENTRADA / SALIDA</p>
+      <h2 class="titulo reveal">FLUJO DE E/S</h2>
       <div class="envelope-wrap reveal" id="sobre-memoria" role="button" tabindex="0" aria-label="Abrir diagrama de memoria">
         <div class="envelope">
           <div class="envelope-back"></div>
@@ -515,8 +535,8 @@
 
     <!-- 3.2 ENTRADA/SALIDA -->
     <section id="es">
-      <p class="meta reveal">03 · ENTRADA / SALIDA</p>
-      <h2 class="titulo reveal">FLUJO DE E/S</h2>
+      <p class="meta reveal">03 · MEMORIA Y PROCESAMIENTO </p>
+      <h2 class="titulo reveal">JERARQUÍA DE MEMORIA </h2>
       <div class="dos reveal">
         <video id="video-es" class="video-es" muted playsinline preload="metadata">
           <source src="arqui.mp4" type="video/mp4">
@@ -532,13 +552,14 @@
       <p class="meta reveal">03 · SISTEMA OPERATIVO</p>
       <h2 class="titulo reveal">CAPA DE ABSTRACCIÓN</h2>
       <div class="dos reveal">
-        <div class="card"><b>NODO EMBEBIDO</b><strong>Capa de abstracción: </strong>Firmware / control directo de hardware (o RTOS según la implementación) sobre el 
-          microcontrolador ESP32-WROVER-IE.<br><strong>Cómo separa del hardware: </strong>Abstrae los pines, señales y periféricos físicos de los sensores ambientales 
-          (temperatura, humedad y amoniaco/MQ135) y del ventilador de 3.3 V, evitando que la lógica de adquisición o respuesta tenga que manipular directamente 
-          registros eléctricos crudos en cada ciclo. <br><br><b>SERVIDOR</b><strong>Capa de abstracción: </strong>Sistema operativo completo (como Linux) ejecutándose en la Raspberry 
-          Pi.<br><strong>Cómo separa del hardware: </strong>Provee controladores de dispositivo, gestión de procesos/hilos, red, almacenamiento y sistemas de archivos para que la base
-           de datos y la aplicación web operen sin depender directamente del hardware físico subyacente, y para que el encargado de la granja interactúe a través de 
-           la interfaz web.</br></div>
+        <div class="card">
+          <b>NODO EMBEBIDO (ESP32-WROVER-IE)</b>
+          <strong>Abstracción: </strong>Firmware / control directo o RTOS.<br>
+          <strong>Separación del hardware: </strong>Abstrae pines y señales de sensores (temperatura, humedad, MQ135) y del ventilador de 3.3 V sin tocar registros eléctricos crudos en cada ciclo.<br><br>
+          <b>SERVIDOR (RASPBERRY PI)</b>
+          <strong>Abstracción: </strong>SO completo (Linux).<br>
+          <strong>Separación del hardware: </strong>Gestiona controladores, procesos/hilos, red, almacenamiento y archivos para que la BD, la web y la interfaz del operador corran desacopladas del hardware.
+        </div>
         <div class="hueco"><img src="Tux.webp" alt="Foto 1"></div>
       </div>
       <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
@@ -549,24 +570,27 @@
       <p class="meta reveal">04 · CONCURRENCIA</p>
       <h2 class="titulo reveal">PROCESOS, HILOS E IPC</h2>
       <div class="dos reveal">
-        <div class="hueco">Diagrama</div>
+        <div class="hueco"><img src="procesos.png" alt="Foto 1"></div>
         <div class="card">
-          <b>PROCESOS AISLADOS</b>
-          <p>Nodo de sensado, motor en Raspberry Pi (BD y ventilador de 3.3 V) y aplicación web separados para aislar fallos y mantener el monitoreo continuo.</p>
-          <b>HILOS</b>
-          <p>Hilos en la Raspberry Pi y en la web compartiendo estado en memoria para procesar lecturas, activar ventilación y atender al encargado sin bloqueos.</p>
-          <b>IPC (SOCKETS, COLAS, TUBERÍAS…)</b>
-          <p><b>Sockets</b> para telemetría y vista web en vivo, <b>colas de mensajes</b> para desacoplar ingesta y BD, y <b>tuberías/memoria compartida</b> para enlaces locales rápidos.</p>
-        </div>
+        <b>PROCESOS AISLADOS</b>
+        <p>Nodo, motor en Raspberry Pi (BD y ventilador 3.3 V) y web separados para aislar fallos.</p>
+        <b>HILOS</b>
+        <p>Hilos compartiendo estado en memoria para procesar lecturas, activar ventilación y responder sin bloqueos.</p>
+        <b>IPC</b>
+        <p><b>Sockets</b> (telemetría/web), <b>colas</b> (ingesta–BD) y <b>tuberías/memoria compartida</b> (enlaces locales).</p>
       </div>
-      <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
+      <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span><span class="tag proyectado">[PROYECTADO]</span></p>
     </section>
 
     <!-- 4.2 RIESGOS Y SINCRONIZACIÓN -->
     <section id="riesgos">
       <video id="video-riesgos" class="video-riesgos reveal" muted playsinline preload="auto">
-        <source src="riegos.mp4" type="video/mp4">
+        <source src="riesgos.mp4" type="video/mp4">
       </video>
+     <p class="tags reveal">
+        <span class="tag aplicado">[APLICADO]</span>
+        <span class="tag proyectado">[PROYECTADO]</span>
+      </p>
     </section>
 
     <!-- 5. PUENTE UX ↔ SISTEMA -->
@@ -574,10 +598,10 @@
       <p class="meta reveal">05 · EL PUENTE</p>
       <h2 class="titulo reveal">UX ↔ SISTEMA</h2>
       <div class="dos reveal">
-        <div class="card"><b>DECISIÓN TÉCNICA INTERNA</b>Sincronizar el flujo de lecturas de temperatura, humedad y amoniaco (ESP32 → Raspberry Pi → BD) con actualización atómica/timestamp y refresco inmediato hacia la web.</div>
-        <div class="card"><b>EFECTO EN EL USUARIO</b>El encargado ve alertas de amoniaco y el estado del ventilador al instante sin datos obsoletos, interpretando el domicilio en <60 s con mayor confianza y claridad.</div>
+        <div class="card"><b>DECISIÓN TÉCNICA INTERNA</b>Coordinar la recepción de lecturas (temperatura, humedad, amoniaco) vía MQTT y su actualización/registro sin bloquear la consulta, evitando datos desfasados o retrasos en la vista.</div>
+        <div class="card"><b>EFECTO EN EL USUARIO</b>El encargado consulta el estado del domicilio en &lt; 60 s y detecta cambios o alertas clave con mayor claridad y confianza, sin depender de recargas manuales.</div>
       </div>
-      <p class="tags reveal"><span class="tag aplicado">[APLICADO]</span></p>
+      <p class="tags reveal"><span class="tag proyectado">[PROYECTADO]</span></p>
     </section>
 
     <!-- 6. VALORACIÓN CRÍTICA -->
