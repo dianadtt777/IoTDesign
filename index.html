@@ -153,15 +153,28 @@
     #riesgos {
       position: relative;
       width: 100%;
-      height: 100dvh; /* 100% del alto visible en escritorio y móvil */
+      min-height: 100dvh;
+      height: 100dvh;
+      max-width: none;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
+    }
+
+    #riesgos .video-riesgos {
+      position: absolute;
+      inset: 0; /* Equivale a top: 0; right: 0; bottom: 0; left: 0 */
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: cover; /* O "contain" si no quieres recorte */
     }
 
     .video-riesgos {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Cambia a "contain" si prefieres ver todo el cuadro sin recorte */
-      display: block;
+      object-fit: contain; /* Sin recorte; puede dejar franjas laterales o arriba/abajo */
     }
 
     #puente {
